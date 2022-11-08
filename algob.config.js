@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 // NOTE: below we provide some example accounts.
 // DON'T this account in any working environment because everyone can check it and use
 // the private keys (this accounts are visible to everyone).
@@ -23,9 +25,8 @@ let accounts = mkAccounts([
     // This account is created using `make setup-master-account` command from our
     // `/infrastructure` directory. It already has many ALGOs
     name: "master",
-    addr: "PDUO4WIVCA5RUX7PNIVTQRZDYOYX2PHSRTYRB5B2CNSIJEWSWNIEDTYQOE",
-    mnemonic:
-      "remember away chalk spirit family stomach domain guess vague peace race hub donor cloth fence around joy garage stand trap truck put knock abstract barely",
+    addr: process.env.MASTER_ADDR,
+    mnemonic: process.env.MASTER_MNEMONIC
   },
 ]);
 
@@ -63,11 +64,9 @@ let defaultCfg = {
 
 // purestake testnet config
 let purestakeTestNetCfg = {
-  host: "https://testnet-algorand.api.purestake.io/ps2",
+  host: process.env.ALGOD_ADDR_TESTNET,
   port: "",
-  token: {
-    "X-API-Key": "GNDEMDaDNa9tyYmIFagPfsZM4KEpRX7iq7LXMCc0",
-  },
+  token: JSON.parse(process.env.ALGOD_TOKEN_TESTNET),
   accounts: accounts,
 };
 

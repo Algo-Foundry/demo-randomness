@@ -2,12 +2,14 @@ from pyteal import *
 
 def approval_program():
 
-    # create 2 global states
+    # create 3 global states
     # OldNumber - holds an int value that represents the previous random number generated
     # Number - holds an int value that represents the most recent random number generated
+    # OracleId - deployed oracle on testnet (https://developer.algorand.org/articles/usage-and-best-practices-for-randomness-beacon/) 
     handle_creation = Seq([
         App.globalPut(Bytes("OldNumber"), Int(0)),
         App.globalPut(Bytes("Number"), Int(0)),
+        App.globalPut(Bytes("OracleId"), Btoi(Txn.application_args[0])),
         Return(Int(1))
     ])
 
@@ -27,7 +29,7 @@ def approval_program():
         InnerTxnBuilder.MethodCall(
 
             # call the random oracle on testnet
-            app_id=Int(110096026),
+            app_id=App.globalGet(Bytes("OracleId")),
             # abi method signature
             method_signature="get(uint64,byte[])byte[]",
             # provide args

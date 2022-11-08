@@ -1,11 +1,5 @@
-const {
-  executeTransaction,
-  convert,
-  readAppGlobalState,
-  balanceOf,
-} = require("@algo-builder/algob");
+const { convert } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
-const algosdk = require("algosdk");
 
 async function run(runtimeEnv, deployer) {
   const master = deployer.accountsByName.get("master");
@@ -13,6 +7,9 @@ async function run(runtimeEnv, deployer) {
   // contract files
   const approvalFile = "vrf_approval.py";
   const clearStateFile = "vrf_clearstate.py";
+  
+  // oracle ID on testnet
+  const oracleId = Number(process.env.ORACLE_ID);
 
   // deploy app
   await deployer.deployApp(
@@ -24,15 +21,15 @@ async function run(runtimeEnv, deployer) {
       clearProgramFilename: clearStateFile,
       localInts: 0,
       localBytes: 0,
-      globalInts: 2,
+      globalInts: 3,
       globalBytes: 0,
+      appArgs: [convert.uint64ToBigEndian(oracleId)]
     },
     {}
   );
 
   // fund app
   const mainApp = deployer.getApp("VRFApp");
-  const vestingAddress = mainApp.applicationAccount;
 
   await deployer.executeTx({
     type: types.TransactionType.TransferAlgo,

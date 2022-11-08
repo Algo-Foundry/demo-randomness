@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@algo-builder/algob": "^6.0.0",
-    "algosdk": "^1.23.1"
+    "algosdk": "^1.23.1",
+    "dotenv": "^16.0.3"
   }
 }
