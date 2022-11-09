@@ -1,4 +1,4 @@
-# AVM v7 - On Chain Randomness Demo
+# AVM 7 - On Chain Randomness Demo
 This demo consists of 2 parts,
 
 1. A sample smart contract that calls the oracle contract and saves the random value it the global state.
