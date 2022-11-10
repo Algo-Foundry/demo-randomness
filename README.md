@@ -4,6 +4,8 @@ This demo consists of 2 parts,
 1. A sample smart contract that calls the oracle contract and saves the random value it the global state.
 2. An ABI call to the oracle contract to get a random value.
 
+The oracle contract application deployed on TestNet is [110096026](https://testnet.algoexplorer.io/application/110096026).
+
 ## Node requirements
 1. Purestake API account is required to communicate with TestNet.
 2. An Algorand account with some Algos.
