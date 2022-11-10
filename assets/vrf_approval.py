@@ -37,10 +37,14 @@ def approval_program():
         ),
         InnerTxnBuilder.Submit(),
 
-        # returns a byte array with 4 bytes of data context, hence we remove them.
+        # based on arc-4 standards, return value is prefixed with 4 bytes (151f7c75) in hex, so we will remove it
+        # this gives us the 32 byte result
+        # https://pyteal.readthedocs.io/en/stable/abi.html#on-chain-in-an-inner-transaction
         scratchReturn.store(Suffix(InnerTxn.last_log(), Int(4))),
 
-        # use extractuint64 to extract a uint64 from the first 8 bytes - you can change Int(0) to Int(0) to Int(24) as you need 8 bytes for uint64
+        # use extractuint64 to extract a uint64 from the first 8 bytes
+        # to get a uint64 random output, you can change the offset to extract 8 bytes from anywhere within the 32 byte result
+        # uint64 only requires 8 bytes
         App.globalPut(Bytes("Number"), ExtractUint64(scratchReturn.load(), Int(0))),
         Return(Int(1))
     ])

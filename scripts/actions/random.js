@@ -14,6 +14,7 @@ async function run(runtimeEnv, deployer) {
   const nodeStatus = await deployer.algodClient.status().do();
   const currentRound = nodeStatus["last-round"];
   const commitRound = (Math.round(currentRound / 8) * 8) - (188 * 8);
+  console.log(commitRound);
 
   const appCallArgs = [
     // app call
