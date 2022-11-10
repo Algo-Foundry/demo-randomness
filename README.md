@@ -23,10 +23,10 @@ This demo consists of 2 parts,
 ## References
 
 ### How the oracle contract works
-[https://github.com/ori-shem-tov/vrf-oracle/blob/beacon/DESIGN.md](https://github.com/ori-shem-tov/vrf-oracle/blob/beacon/DESIGN.md)
+1. [https://github.com/ori-shem-tov/vrf-oracle/blob/beacon/DESIGN.md](https://github.com/ori-shem-tov/vrf-oracle/blob/beacon/DESIGN.md)
 
 ### Readings
-[https://developer.algorand.org/articles/randomness-on-algorand](https://developer.algorand.org/articles/randomness-on-algorand)
-[https://developer.algorand.org/articles/usage-and-best-practices-for-randomness-beacon/](https://developer.algorand.org/articles/usage-and-best-practices-for-randomness-beacon/)
+1. [https://developer.algorand.org/articles/randomness-on-algorand](https://developer.algorand.org/articles/randomness-on-algorand)
+2. [https://developer.algorand.org/articles/usage-and-best-practices-for-randomness-beacon/](https://developer.algorand.org/articles/usage-and-best-practices-for-randomness-beacon/)
 
 
